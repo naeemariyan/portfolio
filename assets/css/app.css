@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'calibreregular';
   src: url("webfontkit/calibreregular-webfont.woff2") format("woff2"), url("webfontkit/calibreregular-webfont.woff") format("woff");
@@ -77,6 +78,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--lightest-slate);
   line-height: 1.1; }
 
+button {
+  cursor: pointer;
+  border: 0px;
+  border-radius: 0px; }
+
 a {
   display: inline-block;
   text-decoration: none;
@@ -84,6 +90,24 @@ a {
   color: inherit;
   position: relative;
   transition: var(--transition); }
+
+a.inline-link {
+  display: inline-block;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  position: relative;
+  transition: var(--transition);
+  color: var(--green); }
+  a.inline-link:after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 1px;
+    position: relative;
+    bottom: 0.37em;
+    background-color: var(--green);
+    transition: var(--transition);
+    opacity: 0.5; }
 
 body {
   margin: 0px;
@@ -100,6 +124,14 @@ body {
 
 body * {
   box-sizing: border-box; }
+
+p > a {
+  display: inline-block;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  position: relative;
+  transition: var(--transition);
+  color: var(--green); }
 
 .header {
   display: flex;
@@ -373,6 +405,9 @@ section {
   margin: 0px auto;
   padding: 100px 0px;
   max-width: 1000px; }
+  @media screen and (max-width: 766px) {
+    section {
+      padding: 60px 0px; } }
 
 .hero-section {
   display: flex;
@@ -425,5 +460,269 @@ section {
     cursor: pointer;
     transition: var(--transition);
     margin-top: 50px; }
+
+section .numbered-heading {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  margin: 10px 0px 40px;
+  width: 100%;
+  font-size: clamp(26px, 5vw, var(--fz-heading));
+  white-space: nowrap; }
+  section .numbered-heading:before {
+    position: relative;
+    bottom: 4px;
+    counter-increment: section;
+    content: "0" counter(section) ".";
+    margin-right: 10px;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
+    font-weight: 400; }
+  section .numbered-heading:after {
+    content: "";
+    display: block;
+    position: relative;
+    top: -5px;
+    width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: var(--lightest-navy); }
+  @media screen and (max-width: 1080px) {
+    section .numbered-heading:after {
+      width: 200px; } }
+  @media screen and (max-width: 800px) {
+    section .numbered-heading:after {
+      width: 100%;
+      margin-left: 10px; } }
+
+#about .inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px; }
+  @media screen and (max-width: 768px) {
+    #about .inner {
+      display: block; } }
+#about ul.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+  gap: 0px 10px;
+  padding: 0px;
+  margin: 20px 0px 0px;
+  overflow: hidden;
+  list-style: none; }
+  #about ul.skills-list li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-family: arial;
+    font-size: var(--fz-xs); }
+    #about ul.skills-list li:before {
+      content: "▹";
+      position: absolute;
+      left: 0px;
+      color: var(--green);
+      font-size: var(--fz-md);
+      line-height: 12px; }
+#about .about__style-pic {
+  position: relative;
+  max-width: 300px; }
+  @media screen and (max-width: 768px) {
+    #about .about__style-pic {
+      margin: 50px auto 0px;
+      width: 70%; } }
+  #about .about__style-pic .wrapper {
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    transition: var(--transition);
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--green); }
+    #about .about__style-pic .wrapper:hover, #about .about__style-pic .wrapper:focus {
+      box-shadow: 0 20px 30px -15px var(--navy-shadow); }
+    #about .about__style-pic .wrapper:before {
+      top: 0px;
+      left: 0px;
+      background-color: var(--navy);
+      mix-blend-mode: screen; }
+    #about .about__style-pic .wrapper:before, #about .about__style-pic .wrapper:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius);
+      transition: var(--transition); }
+    #about .about__style-pic .wrapper:after {
+      border: 2px solid var(--green);
+      top: 20px;
+      left: 20px;
+      z-index: -1; }
+    #about .about__style-pic .wrapper:hover::after, #about .about__style-pic .wrapper:focus::after {
+      top: 15px;
+      left: 15px; }
+    #about .about__style-pic .wrapper .gatsby-image-wrapper {
+      position: relative;
+      overflow: hidden; }
+    #about .about__style-pic .wrapper .gatsby-image-wrapper-constrained {
+      display: inline-block; }
+    #about .about__style-pic .wrapper .img {
+      position: relative;
+      border-radius: var(--border-radius);
+      mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1);
+      transition: var(--transition); }
+    #about .about__style-pic .wrapper .gatsby-image-wrapper [data-main-image] {
+      opacity: 0;
+      transform: translateZ(0);
+      transition: opacity .25s linear;
+      will-change: opacity; }
+    #about .about__style-pic .wrapper .gatsby-image-wrapper {
+      width: 100%;
+      max-width: 100%;
+      vertical-align: middle; }
+      #about .about__style-pic .wrapper .gatsby-image-wrapper img {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        max-width: none;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        object-fit: cover; }
+    #about .about__style-pic .wrapper:hover .gatsby-image-wrapper {
+      filter: none;
+      mix-blend-mode: normal; }
+    @media screen and (max-width: 768px) {
+      #about .about__style-pic .wrapper .gatsby-image-wrapper {
+        filter: none;
+        mix-blend-mode: normal; } }
+
+.jobs__styledJobs .inner {
+  display: flex;
+  min-height: 340px; }
+  @media (max-width: 766px) {
+    .jobs__styledJobs .inner {
+      display: block; } }
+.jobs__styledJobs .jobs__styledTabList {
+  position: relative;
+  z-index: 3;
+  width: max-content;
+  padding: 0px;
+  margin: 0px;
+  list-style: none; }
+  @media (max-width: 600px) {
+    .jobs__styledJobs .jobs__styledTabList {
+      display: flex;
+      overflow-x: auto;
+      width: calc(100% + 100px);
+      padding-left: 50px;
+      margin-left: -50px;
+      margin-bottom: 30px; } }
+  @media (max-width: 480px) {
+    .jobs__styledJobs .jobs__styledTabList {
+      width: calc(100% + 50px);
+      padding-left: 25px;
+      margin-left: -25px; } }
+  .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton {
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: var(--tab-height);
+    padding: 0px 20px 2px;
+    border-left: 2px solid var(--lightest-navy);
+    background-color: transparent;
+    color: var(--slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+    text-align: left;
+    white-space: nowrap; }
+    .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton:hover, .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton:focus {
+      background-color: var(--light-navy); }
+    .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton:hover, .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton:active, .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton:focus {
+      color: var(--green);
+      outline: 0px; }
+    @media (max-width: 768px) {
+      .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton {
+        padding: 0px 15px 2px; } }
+    @media (max-width: 600px) {
+      .jobs__styledJobs .jobs__styledTabList .jobs__styledTabButton {
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        min-width: 120px;
+        padding: 0px 15px;
+        border-left: 0px;
+        border-bottom: 2px solid var(--lightest-navy);
+        text-align: center; } }
+  .jobs__styledJobs .jobs__styledTabList .jobs__styledHighlight {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 2px;
+    height: var(--tab-height);
+    border-radius: var(--border-radius);
+    background: var(--green);
+    transform: translateY(calc(0 * var(--tab-height)));
+    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s; }
+    @media (max-width: 766px) {
+      .jobs__styledJobs .jobs__styledTabList .jobs__styledHighlight {
+        top: auto;
+        bottom: 0px;
+        width: 100%;
+        max-width: var(--tab-width);
+        height: 2px;
+        margin-left: 50px;
+        transform: translateX(calc(0 * var(--tab-width))); } }
+.jobs__styledJobs .jobs__styledTabPanels {
+  position: relative;
+  width: 100%;
+  margin-left: 20px; }
+  @media (max-width: 766px) {
+    .jobs__styledJobs .jobs__styledTabPanels {
+      margin-left: 0; } }
+  .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel {
+    width: 100%;
+    height: auto;
+    padding: 10px 5px; }
+    .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel h3 {
+      margin-bottom: 2px;
+      font-size: var(--fz-xxl);
+      font-weight: 500;
+      line-height: 1.3; }
+      .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel h3 .company {
+        color: var(--green); }
+    .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel .range {
+      margin-bottom: 25px;
+      color: var(--light-slate);
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs); }
+    .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel ul {
+      padding: 0px;
+      margin: 0px;
+      list-style: none;
+      font-size: var(--fz-lg); }
+      .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel ul li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px; }
+        .jobs__styledJobs .jobs__styledTabPanels .jobs__styledTabPanel ul li:before {
+          content: "▹";
+          position: absolute;
+          left: 0px;
+          color: var(--green); }
 
 /*# sourceMappingURL=app.css.map */
